@@ -427,7 +427,7 @@ def section_change(request, id):
                 request, AMDSectionForm, SECTION_TYPE.AMD, section)
         if int(request.POST.get('type')) == SECTION_TYPE.AVMD:
             form_data = section_update_form(
-                request, AVMDSectionForm, SECTION_TYPE.AVMD, section)    
+                request, AMDSectionForm, SECTION_TYPE.AVMD, section)    
 
         if form_data.get('save_tag'):
             return HttpResponseRedirect(redirect_url_to_survey_list + '%s/#row%s'
