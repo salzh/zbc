@@ -28,7 +28,7 @@ from survey.models import Survey_template, Survey, Section_template, Section,\
     Branching_template, Branching, Result, ResultAggregate
 from survey.forms import SurveyForm, PlayMessageSectionForm,\
     MultipleChoiceSectionForm, RatingSectionForm,\
-    CaptureDigitsSectionForm, RecordMessageSectionForm,\
+    CaptureDigitsSectionForm, AMDSectionForm, RecordMessageSectionForm,\
     CallTransferSectionForm, BranchingForm, ScriptForm,\
     SMSSectionForm, SurveyDetailReportForm, SurveyFileImport,\
     ConferenceSectionForm, SealSurveyForm
