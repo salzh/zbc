@@ -270,9 +270,9 @@ def section_add(request):
         if int(request.POST.get('type')) == SECTION_TYPE.SMS:
             form_data = section_add_form(request, SMSSectionForm, survey, SECTION_TYPE.SMS)
         if int(request.POST.get('type')) == SECTION_TYPE.AMD:
-                   form_data = section_add_form(request, SMSSectionForm, survey, SECTION_TYPE.SMS)
+                   form_data = section_add_form(request, AMDSectionForm, survey, SECTION_TYPE.SMS)
         if int(request.POST.get('type')) == SECTION_TYPE.AVMD:
-            form_data = section_add_form(request, SMSSectionForm, survey, SECTION_TYPE.SMS)
+            form_data = section_add_form(request, AMDSectionForm, survey, SECTION_TYPE.SMS)
 
         if form_data.get('save_tag'):
             return HttpResponseRedirect(redirect_url_to_survey_list + '%s/#row%s'

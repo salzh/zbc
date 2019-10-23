@@ -343,6 +343,45 @@ class CaptureDigitsSectionForm(ModelForm):
         self.fields['type'].widget.attrs['onchange'] = 'this.form.submit();'
 
 
+class AMDSectionForm(ModelForm):
+
+    """AMDSectionForm ModelForm"""
+
+    class Meta:
+        model = Section_template
+        # fields = ['type', 'survey', 'question', 'validate_number', 'number_digits', 'min_number', 'max_number',
+        #          'retries', 'timeout', 'audiofile', 'invalid_audiofile', 'completed']
+
+    def __init__(self, user, *args, **kwargs):
+        super(AMDSectionForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.layout = Layout(
+            Field('survey', 'script'),
+            Div(Div('type', css_class='col-md-10 col-xs-12'), css_class='row'),
+            Div(
+                Div('question', css_class='col-md-8 col-xs-12'),
+                css_class='row'
+            ),
+            
+          
+            Div(
+                Div(HTML(html_code_of_completed_field), css_class='col-md-6 col-xs-10'),
+                css_class='row'
+            ),
+        )
+        if self.instance.audiofile:
+            self.helper.layout[2][1] = AppendedText('audiofile', append_html_code_to_audio_field)
+        if user:
+            self.fields['audiofile'].choices = get_audiofile_list(user)
+
+        self.fields['survey'].widget = forms.HiddenInput()
+        self.fields['script'].widget = forms.HiddenInput()
+        self.fields['type'].widget.attrs['onchange'] = 'this.form.submit();'
+
+
+
+
 class RecordMessageSectionForm(ModelForm):
 
     """RecordMessageSectionForm ModelForm"""
