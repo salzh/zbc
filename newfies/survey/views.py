@@ -370,6 +370,12 @@ def section_change(request, id):
     elif section.type == SECTION_TYPE.SMS:
         # SMS
         form = SMSSectionForm(request.user, request.POST or None, instance=section)
+    elif section.type == SECTION_TYPE.AMD:
+        # SMS
+        form = AMDSectionForm(request.user, request.POST or None, instance=section)
+    elif section.type == SECTION_TYPE.AVMD:
+        # SMS
+        form = AMDSectionForm(request.user, request.POST or None, instance=section)
 
     request.session['err_msg'] = ''
 
@@ -415,6 +421,13 @@ def section_change(request, id):
         if int(request.POST.get('type')) == SECTION_TYPE.SMS:
             form_data = section_update_form(
                 request, SMSSectionForm, SECTION_TYPE.SMS, section)
+        
+        if int(request.POST.get('type')) == SECTION_TYPE.AMD:
+            form_data = section_update_form(
+                request, AMDSectionForm, SECTION_TYPE.AMD, section)
+        if int(request.POST.get('type')) == SECTION_TYPE.AVMD:
+            form_data = section_update_form(
+                request, AVMDSectionForm, SECTION_TYPE.AVMD, section)    
 
         if form_data.get('save_tag'):
             return HttpResponseRedirect(redirect_url_to_survey_list + '%s/#row%s'
