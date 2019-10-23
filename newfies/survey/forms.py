@@ -361,32 +361,11 @@ class AMDSectionForm(ModelForm):
             Div(Div('type', css_class='col-md-10 col-xs-12'), css_class='row'),
             Div(
                 Div('question', css_class='col-md-8 col-xs-12'),
-                Div('audiofile', css_class='col-md-4 col-xs-12'),
                 css_class='row'
             ),
-            Div(
-                Div('retries', css_class='col-md-6 col-xs-10'),
-                Div('timeout', css_class='col-md-6 col-xs-10'),
-                css_class='row'
-            ),
-            Div(
-                Div(HTML("""
-                    <div class="btn-group" data-toggle="buttons">
-                        <label for="{{ form.validate_number.auto_id }}">{{ form.validate_number.label }}</label><br/>
-                        <div class="make-switch switch-small">
-                        {{ form.validate_number }}
-                        </div>
-                    </div>
-                """), css_class='col-md-4 col-xs-12'),
-                css_class='row'
-            ),
-            Div(
-                Div('number_digits', css_class='col-md-6 col-xs-10'),
-                Div('min_number', css_class='col-md-3 col-xs-10'),
-                Div('max_number', css_class='col-md-3 col-xs-10'),
-                css_class='row'
-            ),
-            Div(Div('invalid_audiofile', css_class='col-md-6 col-xs-8'), css_class='row'),
+           
+           
+         
             Div(
                 Div(HTML(html_code_of_completed_field), css_class='col-md-6 col-xs-10'),
                 css_class='row'
