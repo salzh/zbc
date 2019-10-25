@@ -618,6 +618,9 @@ class BranchingForm(ModelForm):
                                 <label class="btn btn-default">
                                     <input type="radio" name="keys_button" id="button-invalid"> %s
                                 </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="keys_button" id="button-human"> %s
+                                </label>
                             </div>
                             """ % (ugettext('Any Other Key'), ugettext('Invalid'))
                         ), css_class=css_class),
