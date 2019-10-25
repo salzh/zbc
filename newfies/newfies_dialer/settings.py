@@ -18,8 +18,8 @@ from kombu import Queue
 djcelery.setup_loader()
 
 # Django settings for project.
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 ADMINS = (
     ('Your Name', 'your_email@domain.com'),
