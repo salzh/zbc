@@ -67,6 +67,12 @@
                             $('#button-unsure').change( function() {
                                 $("#id_keys").val('unsure');
                             });
+                            $('#button-detcted').change( function() {
+                                $("#id_keys").val('DETECTED');
+                            });
+                            $('#button-nodetected').change( function() {
+                                $("#id_keys").val('NODETECTED');
+                            });
                         });
                     </script>
                     {% crispy form form.helper %}
