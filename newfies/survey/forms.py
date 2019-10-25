@@ -637,16 +637,13 @@ class BranchingForm(ModelForm):
                         """
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-default">
-                                <input type="radio" name="keys_button" id="button-human"> %s
+                                <input type="radio" name="keys_button" id="button-detcted"> %s
                             </label>
                             <label class="btn btn-default">
-                                <input type="radio" name="keys_button" id="button-machine"> %s
-                            </label>
-                            <label class="btn btn-default">
-                                <input type="radio" name="keys_button" id="button-unsure"> %s
+                                <input type="radio" name="keys_button" id="button-nodetected"> %s
                             </label>
                         </div>
-                        """ % ('HUMAN', 'MACHINE','unsure')
+                        """ % ('DETECTED', 'NODETECTED')
                     ), css_class=css_class),
                     css_class='row'
                 )
