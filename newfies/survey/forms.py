@@ -611,13 +611,13 @@ class BranchingForm(ModelForm):
                             """
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-anything"> %s
+                                    <input type="radio" name="keys_button" id="button-human"> %s
                                 </label>
                                 <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-invalid"> %s
+                                    <input type="radio" name="keys_button" id="button-machine"> %s
                                 </label>
                             </div>
-                            """ % (ugettext('Any Other Key'), ugettext('Invalid'))
+                            """ % ('HUMAN', 'MACHINE')
                         ), css_class=css_class),
                         css_class='row'
                     )
