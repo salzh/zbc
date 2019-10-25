@@ -603,8 +603,7 @@ class BranchingForm(ModelForm):
                     css_class='row'
                 )
             )
-        elif (obj_section.type == SECTION_TYPE.AMD
-              or obj_section.type == SECTION_TYPE.AVMD):
+        elif obj_section.type == SECTION_TYPE.AMD or obj_section.type == SECTION_TYPE.AVMD:
             self.helper.layout.append(
                     Div(
                         Div(HTML(
