@@ -18,8 +18,8 @@ from kombu import Queue
 djcelery.setup_loader()
 
 # Django settings for project.
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 ADMINS = (
     ('Your Name', 'your_email@domain.com'),
@@ -551,7 +551,7 @@ CLIENT_SECRET = 'YYYYYYYYYYYYYY'
 
 # DEBUG DIALER
 # ============
-DIALERDEBUG = False
+DIALERDEBUG = True
 DIALERDEBUG_PHONENUMBER = 1000
 
 
