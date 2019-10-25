@@ -58,6 +58,15 @@
                             $('#button-invalid').change( function() {
                                 $("#id_keys").val('invalid');
                             });
+                            $('#button-human').change( function() {
+                                $("#id_keys").val('human');
+                            });
+                            $('#button-machine').change( function() {
+                                $("#id_keys").val('machine');
+                            });
+                            $('#button-unsure').change( function() {
+                                $("#id_keys").val('unsure');
+                            });
                         });
                     </script>
                     {% crispy form form.helper %}
