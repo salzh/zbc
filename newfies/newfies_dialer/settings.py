@@ -296,8 +296,8 @@ else:
         # 'template_timings_panel.panels.TemplateTimings.TemplateTimings',
     ]
     DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False,
-        'HIDE_DJANGO_SQL': False,
+        'INTERCEPT_REDIRECTS': True,
+        'HIDE_DJANGO_SQL': True,
         'ENABLE_STACKTRACES': True,
         'SQL_WARNING_THRESHOLD': 100,   # milliseconds
     }
