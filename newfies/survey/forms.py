@@ -604,33 +604,32 @@ class BranchingForm(ModelForm):
                 )
             )
         elif obj_section.type == SECTION_TYPE.AMD or obj_section.type == SECTION_TYPE.AVMD:
-            if obj_section.type != SECTION_TYPE.HANGUP_SECTION and obj_section.type != SECTION_TYPE.DNC:
-                self.helper.layout.append(
-                    Div(
-                        Div(HTML(
-                            """
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-human"> %s
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-machine"> %s
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-unsure"> %s
-                                </label>
-                            </div>
-                            """ % ('HUMAN', 'MACHINE','UNSURE')
-                        ), css_class=css_class),
-                        css_class='row'
-                    )
+            self.helper.layout.append(
+                Div(
+                    Div(HTML(
+                        """
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+                                <input type="radio" name="keys_button" id="button-human"> %s
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="keys_button" id="button-machine"> %s
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="keys_button" id="button-unsure"> %s
+                            </label>
+                        </div>
+                        """ % ('HUMAN', 'MACHINE','UNSURE')
+                    ), css_class=css_class),
+                    css_class='row'
                 )
-                self.helper.layout.append(
-                    Div(
-                        Div(Fieldset('', 'keys', 'goto'), css_class=css_class),
-                        css_class='row'
-                    )
+            )
+            self.helper.layout.append(
+                Div(
+                    Div(Fieldset('', 'keys', 'goto'), css_class=css_class),
+                    css_class='row'
                 )
+            )
               
         else:
             if obj_section.type != SECTION_TYPE.HANGUP_SECTION and obj_section.type != SECTION_TYPE.DNC:
