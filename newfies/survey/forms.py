@@ -616,8 +616,11 @@ class BranchingForm(ModelForm):
                                 <label class="btn btn-default">
                                     <input type="radio" name="keys_button" id="button-machine"> %s
                                 </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="keys_button" id="button-unsure"> %s
+                                </label>
                             </div>
-                            """ % ('HUMAN', 'MACHINE')
+                            """ % ('HUMAN', 'MACHINE','UNSURE')
                         ), css_class=css_class),
                         css_class='row'
                     )
