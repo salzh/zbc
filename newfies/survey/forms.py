@@ -603,7 +603,7 @@ class BranchingForm(ModelForm):
                     css_class='row'
                 )
             )
-        elif obj_section.type == SECTION_TYPE.AMD or obj_section.type == SECTION_TYPE.AVMD:
+        elif obj_section.type == SECTION_TYPE.AMD:
             self.helper.layout.append(
                 Div(
                     Div(HTML(
@@ -630,7 +630,30 @@ class BranchingForm(ModelForm):
                     css_class='row'
                 )
             )
-              
+        elif obj_section.type == SECTION_TYPE.AVMD:
+            self.helper.layout.append(
+                Div(
+                    Div(HTML(
+                        """
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+                                <input type="radio" name="keys_button" id="button-detected"> %s                            </label>
+                            
+                            <label class="btn btn-default">
+                                <input type="radio" name="keys_button" id="button-nodetected"> %s
+                            </label>
+                        </div>
+                        """ % ('DETECTED', 'NODEDECTED'')
+                    ), css_class=css_class),
+                    css_class='row'
+                )
+            )
+            self.helper.layout.append(
+                Div(
+                    Div(Fieldset('', 'keys', 'goto'), css_class=css_class),
+                    css_class='row'
+                )
+            )      
         else:
             if obj_section.type != SECTION_TYPE.HANGUP_SECTION and obj_section.type != SECTION_TYPE.DNC:
                 self.helper.layout.append(
