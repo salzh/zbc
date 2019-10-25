@@ -607,17 +607,14 @@ class BranchingForm(ModelForm):
               or obj_section.type == SECTION_TYPE.AVMD):
             self.helper.layout.append(
                     Div(
-                        Div(HTML(
+                         Div(HTML(
                             """
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-human"> %s
+                                    <input type="radio" name="keys_button" id="button-anything"> %s
                                 </label>
                                 <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-machine"> %s
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="keys_button" id="button-unsure"> %s
+                                    <input type="radio" name="keys_button" id="button-invalid"> %s
                                 </label>
                             </div>
                             """ % (ugettext('Any Other Key'), ugettext('Invalid'))
