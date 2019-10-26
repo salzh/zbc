@@ -436,10 +436,7 @@ function FSMCall:getavmdnode(current_node)
     local timeout = tonumber(current_node.timeout)
     local retries = tonumber(current_node.retries)
 
-    --Validate timeout
-    if timeout <= 0 then
-        timeout = 1 -- GetDigits 'timeout' must be a positive integer
-    end
+  
     --Validate retries
     if not retries then
         retries = 1
