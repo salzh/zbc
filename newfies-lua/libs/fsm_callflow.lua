@@ -453,12 +453,12 @@ function FSMCall:getavmdnode(current_node)
         i = i + 1
         
         api = freeswitch.API()
-        cmd = "amd "..self.uuid.." start"
+        cmd = "avmd "..self.uuid.." start"
         api:executeString(cmd)
         while self.session:ready() == true do
             avmd_result = self.session:getVariable("avmd_detect") or ''
             if avmd_result == 'TRUE' then
-                cmd = "amd "..self.uuid.." stop"
+                cmd = "avmd "..self.uuid.." stop"
                 api:executeString(cmd)
                 amd_result = 'DETECTED'
                 break
