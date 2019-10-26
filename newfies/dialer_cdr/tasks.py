@@ -546,7 +546,7 @@ def init_callrequest(callrequest_id, campaign_id, callmaxduration, ms_addtowait=
         logger.info("Error with dialout_phone_number - phone_number:%s" % (obj_callrequest.phone_number))
         return False
     else:
-        logger.debug("dialout_phone_number : %s" % dialout_phone_number)
+        logger.debug("dialout_phone_number : %s[%s]" % (dialout_phone_number,type(dialout_phone_number)))
 
     debug_query(10)
 

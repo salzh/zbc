@@ -391,6 +391,77 @@ function FSMCall:getdigitnode(current_node)
     return digits
 end
 
+function FSMCall:getamdnode(current_node)
+    -- Get the node type and start playing it
+    self.debugger:msg("DEBUG", "*** getamdnode ***")
+    local number_digits = 1
+    local dtmf_mask = '0123456789'
+    local invalid_audiofile = ''
+    local timeout = tonumber(current_node.timeout)
+    local retries = tonumber(current_node.retries)
+
+    --Validate timeout
+    if timeout <= 0 then
+        timeout = 1 -- GetDigits 'timeout' must be a positive integer
+    end
+    --Validate retries
+    if not retries then
+        retries = 1
+    elseif retries <= 0 then
+        retries = 1
+    else
+        retries = retries + 1
+    end
+    --Get Invalid Audio
+    
+
+    local i = 0
+    while i < retries do
+        i = i + 1
+        
+        self.session:execute('amd', '');
+        amd_result = self.session:getVariable("amd_result") or ''
+        self.debugger:msg("INFO", "RESULT amd_result : "..amd_result)        
+    end
+
+    return amd_result
+end
+
+function FSMCall:getavmdnode(current_node)
+    -- Get the node type and start playing it
+    self.debugger:msg("DEBUG", "*** getavmdnode ***")
+    local number_digits = 1
+    local dtmf_mask = '0123456789'
+    local invalid_audiofile = ''
+    local timeout = tonumber(current_node.timeout)
+    local retries = tonumber(current_node.retries)
+
+    --Validate timeout
+    if timeout <= 0 then
+        timeout = 1 -- GetDigits 'timeout' must be a positive integer
+    end
+    --Validate retries
+    if not retries then
+        retries = 1
+    elseif retries <= 0 then
+        retries = 1
+    else
+        retries = retries + 1
+    end
+    --Get Invalid Audio
+    
+
+    local i = 0
+    while i < retries do
+        i = i + 1
+        
+        self.session:execute('avmd', '');
+        avmd_result = self.session:getVariable("amd_result") or ''
+        self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
+    end
+
+    return amd_result
+end
 --Used for AMD / Version of next_node only for PLAY_MESSAGE
 --Review if this code is really needed, maybe can replace by next_node
 function FSMCall:next_node_light()
@@ -694,6 +765,13 @@ function FSMCall:next_node()
         digits = self:getdigitnode(current_node)
         self.debugger:msg("INFO", "result digit => "..digits)
 
+    elseif current_node.type == AMD then
+        digits = self:getamdnode(current_node)
+        self.debugger:msg("INFO", "result amd => "..result)
+    elseif current_node.type == AVMD then
+        digits = self:getavmdnode(current_node)
+        self.debugger:msg("INFO", "result avmd => "..result)
+        
     elseif current_node.type == RATING_SECTION then
         digits = self:getdigitnode(current_node)
         self.debugger:msg("INFO", "result digit => "..digits)
@@ -767,6 +845,8 @@ function FSMCall:next_node()
 
     elseif current_node.type == MULTI_CHOICE
         or current_node.type == RATING_SECTION
+        or current_node.type == AMD
+        or current_node.type == AVMD
         or current_node.type == CAPTURE_DIGITS then
 
         --Flag for invalid input
