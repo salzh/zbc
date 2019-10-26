@@ -446,13 +446,14 @@ function FSMCall:getavmdnode(current_node)
         retries = retries + 1
     end
     --Get Invalid Audio
-    
+    self.session.execute('playback', 'silence_stream://1000,1400')
     amd_result = 'NODETECTED'
     local i = 0
     while i < retries do
         i = i + 1
         
         api = freeswitch.API()
+        
         cmd = "avmd "..self.uuid.." start"
         api:executeString(cmd)
         while self.session:ready() == true do
