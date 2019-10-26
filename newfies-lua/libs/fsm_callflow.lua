@@ -453,6 +453,11 @@ function FSMCall:getavmdnode(current_node)
         
         api = freeswitch.API()
         
+        cmd = "uuid_broadcast "..self.uuid.." silence_stream://-1,1400"
+        self.debugger:msg("INFO", "cmd : "..cmd)   
+        api:executeString(cmd)
+        
+        self.debugger:msg("INFO", "cmd : "..cmd)      
         cmd = "avmd "..self.uuid.." start"
         api:executeString(cmd)
         self.debugger:msg("INFO", "cmd : "..cmd)        
@@ -466,7 +471,7 @@ function FSMCall:getavmdnode(current_node)
                 amd_result = 'DETECTED'
                 break
             else
-                self.session:execute('playback', 'silence_stream://100,1400')
+                
             end
         end
         self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
