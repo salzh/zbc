@@ -594,6 +594,7 @@ def init_callrequest(callrequest_id, campaign_id, callmaxduration, ms_addtowait=
             # Each 'W' character waits 1.0 seconds instead of sending a digit.
             # You can also add the tone duration in ms by appending @[duration] after string.
             # Eg. 1w2w3@1000
+            dialout_phone_number = str(dialout_phone_number)
             check_senddigit = dialout_phone_number.partition('w')
             if check_senddigit[1] == 'w':
                 send_digits = check_senddigit[1] + check_senddigit[2]
