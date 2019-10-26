@@ -767,10 +767,10 @@ function FSMCall:next_node()
 
     elseif current_node.type == AMD then
         digits = self:getamdnode(current_node)
-        self.debugger:msg("INFO", "result amd => "..result)
+        self.debugger:msg("INFO", "result amd => "..digits)
     elseif current_node.type == AVMD then
         digits = self:getavmdnode(current_node)
-        self.debugger:msg("INFO", "result avmd => "..result)
+        self.debugger:msg("INFO", "result avmd => "..digits)
         
     elseif current_node.type == RATING_SECTION then
         digits = self:getdigitnode(current_node)
