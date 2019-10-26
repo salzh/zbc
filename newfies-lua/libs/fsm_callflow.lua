@@ -450,13 +450,22 @@ function FSMCall:getavmdnode(current_node)
     end
     --Get Invalid Audio
     
-
+    amd_result = 'NODETECTED'
     local i = 0
     while i < retries do
         i = i + 1
         
-        self.session:execute('avmd', '');
-        avmd_result = self.session:getVariable("amd_result") or ''
+        self.session:execute('avmd_start', '');
+        while self.session:ready() == true do
+            avmd_result = self.session:getVariable("avmd_detect") or ''
+            if avmd_result == 'TRUE' then
+                self.session:execute('avmd_stop', '');
+                amd_result = 'DETECTED'
+                break
+            else
+                os.execute("sleep 1")
+            end
+        end
         self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
     end
 
