@@ -446,7 +446,7 @@ function FSMCall:getavmdnode(current_node)
         retries = retries + 1
     end
     --Get Invalid Audio
-    self.session.execute('playback', 'silence_stream://1000,1400')
+    self.session:execute('playback', 'silence_stream://1000,1400')
     amd_result = 'NODETECTED'
     local i = 0
     while i < retries do
