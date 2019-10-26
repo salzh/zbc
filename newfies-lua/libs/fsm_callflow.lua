@@ -446,7 +446,6 @@ function FSMCall:getavmdnode(current_node)
         retries = retries + 1
     end
     --Get Invalid Audio
-    self.session:execute('playback', 'silence_stream://1000,1400')
     amd_result = 'NODETECTED'
     local i = 0
     while i < retries do
@@ -456,15 +455,18 @@ function FSMCall:getavmdnode(current_node)
         
         cmd = "avmd "..self.uuid.." start"
         api:executeString(cmd)
+        self.debugger:msg("INFO", "cmd : "..cmd)        
+
         while self.session:ready() == true do
             avmd_result = self.session:getVariable("avmd_detect") or ''
             if avmd_result == 'TRUE' then
                 cmd = "avmd "..self.uuid.." stop"
                 api:executeString(cmd)
+                self.debugger:msg("INFO", "cmd : "..cmd)
                 amd_result = 'DETECTED'
                 break
             else
-                os.execute("sleep 1")
+                self.session:execute('playback', 'silence_stream://1000,1400')
             end
         end
         self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
