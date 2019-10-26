@@ -466,7 +466,7 @@ function FSMCall:getavmdnode(current_node)
                 amd_result = 'DETECTED'
                 break
             else
-                self.session:execute('playback', 'silence_stream://1000,1400')
+                self.session:execute('playback', 'silence_stream://100,1400')
             end
         end
         self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
