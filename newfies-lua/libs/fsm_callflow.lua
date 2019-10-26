@@ -397,7 +397,7 @@ function FSMCall:getamdnode(current_node)
     local number_digits = 1
     local dtmf_mask = '0123456789'
     local invalid_audiofile = ''
-    local timeout = tonumber(current_node.timeout)
+    local timeout = tonumber(current_node.timeout) or 0;
     local retries = tonumber(current_node.retries)
 
     --Validate timeout
