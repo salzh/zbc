@@ -399,9 +399,13 @@ def contact_change(request, object_id):
     }
     return render_to_response('dialer_contact/contact/change.html', data, context_instance=RequestContext(request))
 
-
 @login_required
 def contact_import(request):
+    return render_to_response('dialer_contact/contact/change.html', data, context_instance=RequestContext(request))
+
+
+@login_required
+def contact_import2(request):
     """Import CSV file of Contacts for the logged in user
 
     **Attributes**:
