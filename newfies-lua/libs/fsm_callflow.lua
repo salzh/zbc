@@ -460,14 +460,13 @@ function FSMCall:getavmdnode(current_node)
     --self.session:execute('avmd', 'start');
     self.session:execute('avmd_start', '');
     while self.session:ready() == true do
-        self.session:execute('playback', 'silence_stream://1000,1400');
         avmd_result = self.session:getVariable("avmd_detect") or ''
         if avmd_result == 'TRUE' then
             self.session:execute('avmd_stop', '');
             amd_result = 'DETECTED'
             break
         else
-            os.sleep(1);
+            self.session:execute('playback', 'silence_stream://1000,1400');           
         end
     end
     self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
