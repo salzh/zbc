@@ -447,34 +447,31 @@ function FSMCall:getavmdnode(current_node)
     end
     --Get Invalid Audio
     amd_result = 'NODETECTED'
-    local i = 0
-    while i < retries do
-        i = i + 1
+   
         
-        api = freeswitch.API()
-        
-        --cmd = "uuid_broadcast "..self.uuid.." silence_stream://-1,1400"
-        --self.debugger:msg("INFO", "cmd : "..cmd)   
-        --api:executeString(cmd)
-        
-        --self.debugger:msg("INFO", "cmd : "..cmd)      
-        --cmd = "avmd "..self.uuid.." start"
-       -- api:executeString(cmd)
-       -- self.debugger:msg("INFO", "cmd : "..cmd)        
-        self.session:execute('avmd', 'start');
-        
-        while self.session:ready() == true do
-            avmd_result = self.session:getVariable("avmd_detect") or ''
-            if avmd_result == 'TRUE' then
-                self.session:execute('avmd', 'stop');
-                amd_result = 'DETECTED'
-                break
-            else
-                os.sleep(1);
-            end
+    --cmd = "uuid_broadcast "..self.uuid.." silence_stream://-1,1400"
+    --self.debugger:msg("INFO", "cmd : "..cmd)   
+    --api:executeString(cmd)
+    
+    --self.debugger:msg("INFO", "cmd : "..cmd)      
+    --cmd = "avmd "..self.uuid.." start"
+    -- api:executeString(cmd)
+    -- self.debugger:msg("INFO", "cmd : "..cmd)        
+    --self.session:execute('avmd', 'start');
+    self.session:execute('avmd_start', '');
+    while self.session:ready() == true do
+        self.session:execute('playback', 'silence_stream://1000,1400');
+        avmd_result = self.session:getVariable("avmd_detect") or ''
+        if avmd_result == 'TRUE' then
+            self.session:execute('avmd_stop', '');
+            amd_result = 'DETECTED'
+            break
+        else
+            os.sleep(1);
         end
-        self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
     end
+    self.debugger:msg("INFO", "RESULT avmd_result : "..amd_result)        
+    
 
     return amd_result
 end
