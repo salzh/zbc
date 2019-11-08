@@ -422,6 +422,7 @@ def getdnc(extension):
     prefix = dnid[0:3]
 
     #Get key if prefix in state
+    answer = ''
     for key, value in state.items():
         if(RecursiveArrraySearch(state[key] , prefix)):
             answer = key
