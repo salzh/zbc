@@ -36,6 +36,9 @@ from django_lets_go.only_one_task import only_one
 from common_functions import debug_query
 from uuid import uuid1
 from time import sleep
+
+from dialer_cdr.dnccheck import getdnc
+
 try:
     import ESL as ESL
 except ImportError:
@@ -601,7 +604,17 @@ def init_callrequest(callrequest_id, campaign_id, callmaxduration, ms_addtowait=
                 dialout_phone_number = check_senddigit[0]
 
             if obj_callrequest.callerid and len(obj_callrequest.callerid) > 0:
-                args_list.append("origination_caller_id_number='%s'" % obj_callrequest.callerid)
+                
+                if obj_callrequest.callerid == '0000':
+                    origination_caller_id_number = getdnc(dialout_phone_number)
+                    if len(origination_caller_id_number) < 1:
+                        origination_caller_id_number = '8888888888'
+                else:
+                    origination_caller_id_number = obj_callrequest.callerid
+                
+                
+                
+                args_list.append("origination_caller_id_number='%s'" % origination_caller_id_number)
             if obj_callrequest.caller_name and len(obj_callrequest.caller_name) > 0:
                 args_list.append("origination_caller_id_name='%s'" % obj_callrequest.caller_name)
 
