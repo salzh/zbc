@@ -606,7 +606,7 @@ def init_callrequest(callrequest_id, campaign_id, callmaxduration, ms_addtowait=
             if obj_callrequest.callerid and len(obj_callrequest.callerid) > 0:
                 
                 if obj_callrequest.callerid == '0000':
-                    origination_caller_id_number = getdnc(dialout_phone_number)
+                    origination_caller_id_number = getdnc(obj_callrequest.phone_number)
                     if len(origination_caller_id_number) < 1:
                         origination_caller_id_number = '8888888888'
                 else:
