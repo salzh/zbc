@@ -415,12 +415,12 @@ def getdnc(extension):
     #Check for No. of digits in extension(destination_number)
     if temp == 12:
         dnid = extension[2:]
+    elif temp == 11:
+        dnid = extension[1:]
     else:
         dnid = extension
-
     #prefix
     prefix = dnid[0:3]
-
     #Get key if prefix in state
     answer = ''
     for key, value in state.items():
